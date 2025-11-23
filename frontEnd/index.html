@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>ByteCart - Demo</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="top-nav">
+        <a href="index.html" class="brand">
+          <span class="brand-logo">🛒</span>
+          <span class="brand-name">ByteCart</span>
+        </a>
+        <nav class="nav-links">
+          <button class="nav-link" data-route="home">Home</button>
+          <button class="nav-link" data-route="products">Products</button>
+          <button class="nav-link" data-route="cart">
+            Cart
+            <span id="cart-count" class="cart-count-badge">0</span>
+          </button>
+          <a href="login.html" class="nav-link">Login</a>
+          <a href="signup.html" class="nav-link nav-primary">Sign Up</a>
+        </nav>
+      </header>
+
+      <main id="view-root" class="view-root" aria-live="polite"></main>
+
+      <footer class="footer">
+        <p>ByteCart Demo • Not a real store • Built for prototyping</p>
+      </footer>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+  </html>
+
+
