@@ -34,7 +34,7 @@ const dummyProducts = [
   },
 ];
 
-//  ROUTES
+// Route definitions
 const routes = {
   home: "home",
   products: "products",
@@ -81,7 +81,7 @@ function getCartTotal() {
   return cart.reduce((sum, item) => sum + item.price * item.qty, 0);
 }
 
-//  NAVIGATION 
+// Router functions
 function navigateTo(route) {
   const routeKey = routes[route] ? route : routes.home;
   window.location.hash = `#${routeKey}`;
@@ -92,7 +92,7 @@ function setActiveRouteFromHash() {
   renderRoute(hash);
 }
 
-//  RENDER ROUTER 
+// View rendering functions
 function renderRoute(route) {
   const viewRoot = document.getElementById("view-root");
   if (!viewRoot) return;
@@ -115,11 +115,15 @@ function renderRoute(route) {
       viewRoot.innerHTML = renderHomeView();
       break;
   }
+
+  attachViewEventHandlers(route);
 }
 
-//  EMPTY PLACEHOLDER VIEWS 
 function renderHomeView() {
-  return `<section class="view-section"></section>`;
+  return `
+    <section class="view-section">
+    </section>
+  `;
 }
 
 function renderProductsView() {
@@ -170,6 +174,7 @@ function renderProductsView() {
     </section>
   `;
 }
+
 function renderCartView() {
   const cartItems = getCart();
   const total = getCartTotal();
@@ -259,27 +264,187 @@ function renderCartView() {
 }
 
 function renderLoginView() {
-  return `<section class="view-section"></section>`;
+  return `
+    <section class="view-section">
+      <div class="auth-layout-vertical">
+        <div class="auth-copy">
+          <h2>Welcome back to ByteCart</h2>
+          <p>
+            Sign in to your account to continue shopping. This is a demo UI only – 
+            no passwords are stored; nothing is sent anywhere.
+          </p>
+        </div>
+        <div class="auth-form">
+          <form id="login-form" novalidate>
+            <div class="field">
+              <label for="login-email">Email</label>
+              <input id="login-email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="login-password">Password</label>
+              <input id="login-password" type="password" placeholder="Enter your password" required />
+              <p class="field-helper">
+                We skip validation in this demo. Use any email & password to click through.
+              </p>
+            </div>
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" />
+                <span>Remember me</span>
+              </label>
+              <a href="signup.html" class="link-text">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.4rem;">
+              Sign in
+            </button>
+            <div class="form-footer">
+              <span>Don't have an account? <a href="signup.html" class="link-text">Sign up</a></span>
+              <span class="badge-demo">
+                <span>⚠️</span>
+                <span>Demo only, no real accounts.</span>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  `;
 }
 
 function renderSignupView() {
-  return `<section class="view-section"></section>`;
+  return `
+    <section class="view-section">
+      <div class="auth-layout-vertical">
+        <div class="auth-copy">
+          <h2>Create your ByteCart account</h2>
+          <p>
+            Join ByteCart to start shopping. This is a demo UI only – 
+            no passwords are stored; nothing is sent anywhere.
+          </p>
+        </div>
+        <div class="auth-form">
+          <form id="signup-form" novalidate>
+            <div class="field">
+              <label for="signup-name">Full name</label>
+              <input id="signup-name" type="text" placeholder="Ada Lovelace" required />
+            </div>
+            <div class="field">
+              <label for="signup-email">Email</label>
+              <input id="signup-email" type="email" placeholder="you@example.com" required />
+            </div>
+            <div class="field">
+              <label for="signup-password">Password</label>
+              <input id="signup-password" type="password" placeholder="Minimum 8 characters" required />
+              <p class="field-helper">
+                Passwords are not stored or sent anywhere in this prototype.
+              </p>
+            </div>
+            <div class="field">
+              <label for="signup-confirm">Confirm password</label>
+              <input id="signup-confirm" type="password" placeholder="Re-enter your password" required />
+            </div>
+            <div class="form-options">
+              <label class="checkbox-label">
+                <input type="checkbox" required />
+                <span>I agree to the <a href="#" class="link-text">Terms of Service</a> and <a href="#" class="link-text">Privacy Policy</a></span>
+              </label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center; margin-top: 0.4rem;">
+              Create account
+            </button>
+            <div class="form-footer">
+              <span>Already have an account? <a href="login.html" class="link-text">Sign in</a></span>
+              <span class="badge-demo">
+                <span>⚠️</span>
+                <span>Demo only, no real accounts.</span>
+              </span>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  `;
 }
 
-//  INIT 
+function attachViewEventHandlers(route) {
+  document
+    .querySelectorAll("[data-route]")
+    .forEach((el) =>
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = e.currentTarget;
+        const targetRoute = target.getAttribute("data-route");
+        if (targetRoute) {
+          navigateTo(targetRoute);
+        }
+      })
+    );
+
+  if (route === routes.products) {
+    document.querySelectorAll(".btn-add-to-cart").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget;
+        const productId = target.getAttribute("data-product-id");
+        if (productId) {
+          addToCart(productId);
+        }
+      });
+    });
+  }
+
+  if (route === routes.cart) {
+    document.querySelectorAll(".btn-remove").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.currentTarget;
+        const productId = target.getAttribute("data-product-id");
+        if (productId) {
+          removeFromCart(productId);
+          renderRoute("cart");
+        }
+      });
+    });
+  }
+
+  if (route === routes.login) {
+    const form = document.getElementById("login-form");
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Login UI demo only. No data was sent. This is just a prototype.");
+      });
+    }
+  }
+
+  if (route === routes.signup) {
+    const form = document.getElementById("signup-form");
+    if (form) {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        alert("Signup UI demo only. No data was sent. This is just a prototype.");
+      });
+    }
+  }
+}
+
+// Initialize navigation handlers
 document.addEventListener("DOMContentLoaded", () => {
-  document.querySelectorAll("[data-route]").forEach((el) =>
-    el.addEventListener("click", (e) => {
-      e.preventDefault();
-      const target = e.currentTarget;
-      const route = target.getAttribute("data-route");
-      if (route) {
-        navigateTo(route);
-      }
-    })
-  );
+  document
+    .querySelectorAll("[data-route]")
+    .forEach((el) =>
+      el.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = e.currentTarget;
+        const route = target.getAttribute("data-route");
+        if (route) {
+          navigateTo(route);
+        }
+      })
+    );
 
   setActiveRouteFromHash();
+  updateCartCount();
 });
 
+// Handle hash changes for navigation
 window.addEventListener("hashchange", setActiveRouteFromHash);
+
