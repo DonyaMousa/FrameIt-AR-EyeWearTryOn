@@ -20,7 +20,7 @@ Admins can manage products, categories, inventory, and orders through a dedicate
 
 ## 🛠️ Tech Stack
 
-### **Frontend:** HTML, CSS, JavaScript (or React if used)  
+### **Frontend:** HTML, CSS, JavaScript  
 ---
 
 ## 📦 Installation & Setup
@@ -28,4 +28,4 @@ Admins can manage products, categories, inventory, and orders through a dedicate
 ### 1. Clone the repository
 ```bash
 git clone git@github.com:aaymansallamm/byteCart.git
-cd bytecart
+cd byteCart
