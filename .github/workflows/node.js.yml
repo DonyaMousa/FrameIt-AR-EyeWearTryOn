@@ -2,9 +2,11 @@ name: Project CI
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches:
+      - your-branch-name
   pull_request:
-    branches: [ "main", "master" ]
+    branches:
+      - your-branch-name
 
 jobs:
   backend-ci:
