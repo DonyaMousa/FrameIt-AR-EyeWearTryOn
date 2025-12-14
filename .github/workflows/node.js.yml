@@ -1,0 +1,57 @@
+name: Project CI
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  backend-ci:
+    name: Backend (Node.js)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backEnd
+
+    strategy:
+      matrix:
+        node-version: [18.x, 20.x, 22.x]
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        cache-dependency-path: backEnd/package-lock.json
+
+    - name: Install Backend Dependencies
+      run: npm ci
+
+    - name: Run Backend Tests
+      # run: npm test
+      run: echo "No backend tests specified yet."
+
+  frontend-check:
+    name: Frontend (Static)
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontEnd
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Check Entry Point
+      run: |
+        if [ -f "index.html" ]; then
+          echo "Frontend entry point found."
+        else
+          echo "Error: index.html not found!"
+          exit 1
+        fi
+
+    # Optional: You could add a linter step here if desired, e.g. using super-linter or htmlhint
