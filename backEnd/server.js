@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products', require('./routes/productRoutes'));
+app.use('/api/users', require('./routes/userRoutes'));
+
 
 const { errorHandler, notFound } = require('./middleware/errorMiddleware');
 
