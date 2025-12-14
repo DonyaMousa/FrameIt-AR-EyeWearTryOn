@@ -1,0 +1,264 @@
+/* Cart Page */
+.page {
+  padding: 120px 0 80px;
+  min-height: 100vh;
+}
+
+.title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  margin-bottom: 40px;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Cart Items */
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.item {
+  display: grid;
+  grid-template-columns: 100px 1fr auto auto auto;
+  gap: 24px;
+  align-items: center;
+  padding: 24px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  transition: var(--transition-fast);
+}
+
+.item:hover {
+  border-color: var(--color-border-hover);
+}
+
+.itemImage {
+  width: 100px;
+  height: 100px;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.itemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 0.5rem;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-elevated) 0%,
+    var(--color-bg) 100%
+  );
+}
+
+.itemImage span {
+  font-size: 2.5rem;
+  opacity: 0.5;
+}
+
+.itemInfo h3 {
+  font-size: 1.125rem;
+  margin-bottom: 4px;
+  color: var(--color-text);
+}
+
+.itemInfo p {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* Quantity Controls */
+.itemQuantity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.itemQuantity button {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.itemQuantity button:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.itemQuantity span {
+  font-size: 1rem;
+  font-weight: 600;
+  min-width: 32px;
+  text-align: center;
+}
+
+.itemTotal {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-text);
+  min-width: 100px;
+  text-align: right;
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.removeButton:hover {
+  border-color: var(--color-error);
+  color: var(--color-error);
+  background: rgba(255, 77, 106, 0.05);
+}
+
+/* Summary */
+.summary {
+  padding: 32px;
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  position: sticky;
+  top: 100px;
+}
+
+.summary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+}
+
+.summary h2 {
+  font-size: 1.25rem;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  color: var(--color-text-muted);
+}
+
+.total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text);
+}
+
+.total span:last-child {
+  color: var(--color-primary);
+}
+
+.checkoutButton {
+  width: 100%;
+  margin-top: 24px;
+}
+
+/* Empty State */
+.empty {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.empty svg {
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  opacity: 0.5;
+}
+
+.empty h1 {
+  margin-bottom: 12px;
+  font-size: 1.75rem;
+}
+
+.empty p {
+  color: var(--color-text-muted);
+  margin-bottom: 32px;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .content {
+    grid-template-columns: 1fr;
+  }
+
+  .summary {
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 100px 0 60px;
+  }
+
+  .item {
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+  }
+
+  .itemQuantity,
+  .itemTotal,
+  .removeButton {
+    grid-column: 2;
+  }
+
+  .itemQuantity {
+    justify-content: flex-start;
+  }
+
+  .itemTotal {
+    text-align: left;
+  }
+
+  .removeButton {
+    justify-self: flex-end;
+  }
+}

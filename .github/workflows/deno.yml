@@ -1,0 +1,101 @@
+name: ByteCart Demo Frontend
+description: A modern, responsive e-commerce prototype built with vanilla HTML, CSS, and JavaScript (no framework). Features routing via hash, cart state management, and polished dark UI.
+version: 1.0.0
+type: static-website
+language: html/css/js
+license: MIT
+
+structure:
+  "/":
+    - index.html              
+    - login.html              
+    - signup.html             
+    - styles.css
+    - app.js                  
+
+files:
+  - path: index.html
+    description: Single Page Application shell. Loads all views dynamically via app.js using hash routing (#home, #products, #cart).
+
+  - path: login.html
+    description: Dedicated login page with form (demo only). Includes inline script for alert on submit.
+
+  - path: signup.html
+    description: Dedicated signup page with form (demo only). Includes inline script for alert on submit.
+
+  - path: styles.css
+    size: large
+    description: |
+      Comprehensive dark-mode design system with:
+      - Radial gradient background
+      - Glassmorphism & blur effects
+      - Custom components: buttons, cards, pills, badges, forms
+      - Responsive grid layouts
+      - Smooth hover transitions and micro-interactions
+      - Mobile-first breakpoints
+
+  - path: app.js
+    description: |
+      Vanilla JavaScript application logic including:
+      - Dummy product data
+      - In-memory cart system with add/remove/update
+      - Hash-based router (#home, #products, #cart, etc.)
+      - Dynamic view rendering (Home, Products, Cart, Auth)
+      - Event delegation for navigation and cart actions
+      - DOM-based templating (no framework)
+
+features:
+  - Single Page Application (SPA) behavior on index.html
+  - Client-side routing using window.location.hash
+  - Persistent cart state (in memory – resets on refresh)
+  - Fully responsive design (mobile to desktop)
+  - Modern glassmorphism + gradient aesthetic
+  - Accessible markup with aria-live regions
+  - No build tools required – pure HTML/CSS/JS
+  - Demo auth pages (login/signup) with fake submission alerts
+
+routes:
+  "/index.html": Home (default)
+  "/index.html#home": Home view (currently empty – ready for hero content)
+  "/index.html#products": Products grid with "Add to Cart" buttons
+  "/index.html#cart": Cart summary with remove items functionality
+  "/login.html": Login demo page
+  "/signup.html": Signup demo page
+
+deployment:
+  type: static
+  platforms:
+    - Netlify
+    - Vercel
+    - GitHub Pages
+    - Cloudflare Pages
+    - Any web server
+  build_command: none        # Zero-config deployment
+  output_directory: .
+
+
+notes: |
+  - This is a prototype/demo – no backend, no persistence, no real payments.
+  - Cart data is stored only in memory (resets on page refresh).
+  - Auth forms show alerts – no data is sent or stored.
+  - Easily extensible: add real API calls, localStorage persistence, or convert to React/Vue.
+
+recommended_for:
+  - UI/UX prototyping
+  - Frontend developer portfolios
+  - CodePen / JSFiddle-style demos
+  - Learning vanilla JS routing & state management
+  - Inspiration for dark-mode e-commerce designs
+
+
+tags:
+  - vanilla-js
+  - spa
+  - e-commerce
+  - prototype
+  - dark-ui
+  - glassmorphism
+  - responsive
+  - no-framework
+  - hash-routing
+  - cart-system

@@ -1,0 +1,463 @@
+.page {
+  min-height: 100vh;
+  padding: 120px var(--spacing-md) var(--spacing-xl);
+  background: var(--color-bg);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  color: var(--color-text);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  font-family: var(--font-display);
+  padding-top: var(--spacing-md);
+  background: linear-gradient(
+    135deg,
+    var(--color-text) 0%,
+    var(--color-primary) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  position: relative;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-primary),
+    transparent
+  );
+  border-radius: var(--radius-full);
+}
+
+/* Loading & Empty States */
+.loading,
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  gap: var(--spacing-md);
+  text-align: center;
+  color: var(--color-text-secondary);
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Error Box */
+.error {
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.errorTitle {
+  color: #ef4444;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+}
+
+.errorMessage {
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.errorActions {
+  display: flex;
+  gap: var(--spacing-sm);
+}
+
+/* Try-On Layout */
+.tryOnLayout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.cameraSection {
+  width: 100%;
+}
+
+/* Camera Container */
+.cameraContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/3;
+  background: var(--color-bg-elevated);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Camera Off State */
+.cameraOff {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  background: var(--color-bg-elevated);
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: var(--spacing-lg);
+}
+
+.cameraOff h2 {
+  color: var(--color-text);
+  margin: 0;
+}
+
+.cameraOff p {
+  margin: 0;
+  max-width: 300px;
+}
+
+.cameraOff svg {
+  color: var(--color-primary);
+}
+
+.selectedModel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(201, 169, 98, 0.1);
+  border-radius: var(--radius-md);
+  color: var(--color-primary);
+}
+
+.selectedModel strong {
+  color: var(--color-text);
+}
+
+/* Camera Controls */
+.cameraControls {
+  position: absolute;
+  bottom: var(--spacing-md);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-full);
+}
+
+.status {
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-full);
+}
+
+.faceDetected {
+  color: #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+}
+
+.faceSearching {
+  color: var(--color-primary);
+  background: rgba(201, 169, 98, 0.1);
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+
+/* Models List */
+.modelsList {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.modelsList h3 {
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+}
+
+/* Product Image Preview */
+.productImagePreview {
+  margin-bottom: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+}
+
+.productImagePreview h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  font-size: 1.1rem;
+}
+
+.productImageContainer {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg) 0%,
+    var(--color-bg-elevated) 100%
+  );
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: var(--spacing-sm);
+}
+
+.productImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 1rem;
+}
+
+.productInfo {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.modelsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.modelItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md);
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: var(--transition-base);
+}
+
+.modelItem:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.modelItem.selected {
+  border-color: var(--color-primary);
+  background: rgba(201, 169, 98, 0.1);
+}
+
+.modelIcon {
+  font-size: 2rem;
+}
+
+.modelName {
+  font-weight: 500;
+  color: var(--color-text);
+  text-align: center;
+}
+
+/* Try-On Layout */
+.tryOnLayout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--spacing-xl);
+  align-items: start;
+}
+
+.cameraSection {
+  width: 100%;
+}
+
+/* Products Section */
+.productsSection {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  position: sticky;
+  top: 100px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+}
+
+.productsTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-md);
+  color: var(--color-text);
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.productsList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.productCard {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.productCard:hover {
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.1);
+}
+
+.productCard.productSelected {
+  border-color: var(--color-primary);
+  border-width: 2px;
+  background: rgba(201, 169, 98, 0.05);
+  box-shadow: 0 4px 12px rgba(201, 169, 98, 0.2);
+}
+
+.productImage {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg) 0%,
+    var(--color-bg-elevated) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.selectedBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.productImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  padding: 1rem;
+}
+
+.noImage {
+  font-size: 3rem;
+  opacity: 0.3;
+}
+
+.productDetails {
+  padding: var(--spacing-md);
+}
+
+.productName {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+  line-height: 1.3;
+}
+
+.productBrand {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: var(--spacing-xs);
+}
+
+.productPrice {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.addToCartBtn {
+  width: 100%;
+  margin-top: var(--spacing-xs);
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .tryOnLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .productsSection {
+    position: relative;
+    top: 0;
+    max-height: none;
+  }
+}
+
+.modelCategory {
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cameraContainer {
+    aspect-ratio: 3/4;
+    border-radius: var(--radius-lg);
+  }
+
+  .modelsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
