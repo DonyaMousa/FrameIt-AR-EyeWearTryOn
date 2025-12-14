@@ -3,10 +3,10 @@ name: Project CI
 on:
   push:
     branches:
-      - your-branch-name
+      - feat/create-backend-project
   pull_request:
     branches:
-      - your-branch-name
+      - feat/create-backend-project
 
 jobs:
   backend-ci:
