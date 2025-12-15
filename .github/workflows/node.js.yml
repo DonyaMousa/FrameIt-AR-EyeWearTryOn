@@ -2,9 +2,11 @@ name: Project CI
 
 on:
   push:
-    branches: [ "main", "master" ]
+    branches:
+      - feat/create-backend-project
   pull_request:
-    branches: [ "main", "master" ]
+    branches:
+      - feat/create-backend-project
 
 jobs:
   backend-ci:
