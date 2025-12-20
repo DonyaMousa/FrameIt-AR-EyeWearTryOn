@@ -6,6 +6,7 @@ import useStore from "../store/useStore";
 import Button from "../components/Button";
 import styles from "./ProductDetail.module.css";
 
+//product detail page
 export default function ProductDetail() {
   const { slug } = useParams();
   const [product, setProduct] = useState(null);
