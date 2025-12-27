@@ -129,7 +129,7 @@ export default function Home() {
                   <div className={styles.productInfo}>
                     <h3>{product.name}</h3>
                     <p className={styles.productBrand}>{product.brand}</p>
-                    <p className={styles.productPrice}>${product.price}</p>
+                    <p className={styles.productPrice}>{product.price} EGP</p>
                   </div>
                 </Link>
               ))}

@@ -160,7 +160,7 @@ export const createOrder = async (req, res) => {
     }
 
     const tax = subtotal * 0.08; // 8% tax
-    const shipping = subtotal >= 100 ? 0 : 9.99; // Free shipping over $100
+    const shipping = subtotal >= 5000 ? 0 : 300; // Free shipping over 5000 EGP
     const total = subtotal + tax + shipping;
 
     // Generate order number before creating order
@@ -171,7 +171,7 @@ export const createOrder = async (req, res) => {
     console.log("📦 Creating order with number:", orderNumber);
     console.log("   User:", req.user?.id);
     console.log("   Items:", orderItems.length);
-    console.log("   Total: $" + total.toFixed(2));
+    console.log("   Total: " + total.toFixed(2) + " EGP");
 
     const order = new Order({
       orderNumber, // Set order number explicitly

@@ -19,7 +19,7 @@ export default function Checkout() {
   const [error, setError] = useState('');
 
   const subtotal = getCartTotal();
-  const shipping = subtotal >= 100 ? 0 : 9.99;
+  const shipping = subtotal >= 5000 ? 0 : 300;
   const tax = subtotal * 0.08;
   const total = subtotal + shipping + tax;
 
@@ -388,7 +388,7 @@ export default function Checkout() {
                 loading={isProcessing}
                 className={styles.submitBtn}
               >
-                {step < 3 ? 'Continue' : `Pay $${total.toFixed(2)}`}
+                {step < 3 ? 'Continue' : `Pay ${total.toFixed(2)} EGP`}
               </Button>
             </div>
           </form>
@@ -422,7 +422,7 @@ export default function Checkout() {
                     <span className={styles.itemMeta}>{item.frameColor || item.brand || ''}</span>
                   </div>
                   <span className={styles.itemPrice}>
-                    ${(item.price * item.quantity).toFixed(2)}
+                    {(item.price * item.quantity).toFixed(2)} EGP
                   </span>
                 </div>
               ))}
@@ -431,21 +431,21 @@ export default function Checkout() {
             <div className={styles.breakdown}>
               <div className={styles.breakdownRow}>
                 <span>Subtotal</span>
-                <span>${subtotal.toFixed(2)}</span>
+                <span>{subtotal.toFixed(2)} EGP</span>
               </div>
               <div className={styles.breakdownRow}>
                 <span>Shipping</span>
-                <span>{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                <span>{shipping === 0 ? 'FREE' : `${shipping.toFixed(2)} EGP`}</span>
               </div>
               <div className={styles.breakdownRow}>
                 <span>Tax</span>
-                <span>${tax.toFixed(2)}</span>
+                <span>{tax.toFixed(2)} EGP</span>
               </div>
             </div>
 
             <div className={styles.total}>
               <span>Total</span>
-              <span>${total.toFixed(2)}</span>
+              <span>{total.toFixed(2)} EGP</span>
             </div>
 
             <div className={styles.badges}>

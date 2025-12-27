@@ -277,7 +277,7 @@ export default function AdminDashboard() {
           <div className={styles.statCard}>
             <DollarSign size={24} />
             <div>
-              <h3>${totalRevenue.toFixed(2)}</h3>
+              <h3>{totalRevenue.toFixed(2)} EGP</h3>
               <p>Total Revenue</p>
             </div>
           </div>
@@ -379,7 +379,7 @@ export default function AdminDashboard() {
                             </span>
                           )}
                         </div>
-                        <p className={styles.price}>${product.price}</p>
+                        <p className={styles.price}>{product.price} EGP</p>
                         {product.glassesModelId?.modelFiles && (
                           <div className={styles.modelInfo}>
                             <span className={styles.modelBadge}>
@@ -458,7 +458,7 @@ export default function AdminDashboard() {
                           <span className={`${styles.statusBadge} ${styles[order.status]}`}>
                             {order.status}
                           </span>
-                          <span className={styles.totalAmount}>${order.total?.toFixed(2)}</span>
+                          <span className={styles.totalAmount}>{order.total?.toFixed(2)} EGP</span>
                         </div>
                       </div>
                       <div className={styles.orderDetails}>

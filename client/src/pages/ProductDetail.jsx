@@ -75,7 +75,7 @@ export default function ProductDetail() {
           <div className={styles.infoSection}>
             <h1>{product.name}</h1>
             <p className={styles.brand}>{product.brand}</p>
-            <p className={styles.price}>${product.price}</p>
+            <p className={styles.price}>{product.price} EGP</p>
             <p className={styles.description}>{product.description}</p>
             <div className={styles.actions}>
               <Button

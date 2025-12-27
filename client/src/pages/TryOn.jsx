@@ -555,7 +555,7 @@ export default function TryOn() {
                       <div className={styles.productDetails}>
                         <h4 className={styles.productName}>{prod.name}</h4>
                         <p className={styles.productBrand}>{prod.brand}</p>
-                        <p className={styles.productPrice}>${prod.price}</p>
+                        <p className={styles.productPrice}>{prod.price} EGP</p>
                         <Button
                           onClick={(e) => handleAddToCart(prod, e)}
                           size="sm"

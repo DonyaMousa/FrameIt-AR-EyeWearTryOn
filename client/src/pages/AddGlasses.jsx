@@ -211,7 +211,7 @@ export default function AddGlasses() {
 
             <div className={styles.row}>
               <div className={styles.inputGroup}>
-                <label>Price (USD) *</label>
+                <label>Price (EGP) *</label>
                 <input
                   type="number"
                   name="price"
@@ -224,7 +224,7 @@ export default function AddGlasses() {
               </div>
 
               <div className={styles.inputGroup}>
-                <label>Original Price (USD)</label>
+                <label>Original Price (EGP)</label>
                 <input
                   type="number"
                   name="originalPrice"

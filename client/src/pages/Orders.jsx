@@ -168,7 +168,7 @@ export default function Orders() {
                       <p className={styles.itemQuantity}>Qty: {item.quantity}</p>
                     </div>
                     <div className={styles.itemPrice}>
-                      ${(item.price * item.quantity).toFixed(2)}
+                      {(item.price * item.quantity).toFixed(2)} EGP
                     </div>
                   </div>
                 ))}
@@ -177,7 +177,7 @@ export default function Orders() {
               <div className={styles.orderFooter}>
                 <div className={styles.orderTotal}>
                   <span>Total:</span>
-                  <span className={styles.totalAmount}>${order.total.toFixed(2)}</span>
+                  <span className={styles.totalAmount}>{order.total.toFixed(2)} EGP</span>
                 </div>
               </div>
             </div>

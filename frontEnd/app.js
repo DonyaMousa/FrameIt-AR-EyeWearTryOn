@@ -159,7 +159,7 @@ function renderProductsView() {
             </div>
             <div class="product-meta">
               <div>
-                <div class="product-price">$${p.price}</div>
+                <div class="product-price">${p.price} EGP</div>
                 <div class="product-pill">Demo only</div>
               </div>
               <button class="btn btn-primary btn-add-to-cart" data-product-id="${p.id}">
@@ -217,7 +217,7 @@ function renderCartView() {
         <div class="cart-item-main">
           <span class="cart-item-name">${item.name}</span>
           <span class="cart-item-meta">
-            $${item.price} • ${item.tag} • In demo cart
+            ${item.price} EGP • ${item.tag} • In demo cart
           </span>
         </div>
         <div class="cart-item-actions">
@@ -253,7 +253,7 @@ function renderCartView() {
       <div class="cart-summary">
         <div>
           <span>Demo total</span>
-          <strong>$${total.toFixed(2)}</strong>
+          <strong>${total.toFixed(2)} EGP</strong>
         </div>
         <button class="btn btn-primary" disabled title="Checkout is disabled in this demo">
           Checkout disabled

@@ -10,3 +10,6 @@ services:
       - key: PORT
         value: 10000
     healthCheckPath: /api/health
+
+
+

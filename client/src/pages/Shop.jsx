@@ -17,7 +17,7 @@ export default function Shop() {
     frameColor: [],
     lensColor: [],
     material: [],
-    priceRange: [0, 1000],
+    priceRange: [0, 50000],
   });
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export default function Shop() {
       frameColor: [],
       lensColor: [],
       material: [],
-      priceRange: [0, 1000],
+      priceRange: [0, 50000],
     });
   };
 
@@ -125,7 +125,7 @@ export default function Shop() {
     filters.lensColor.length > 0 ||
     filters.material.length > 0 ||
     filters.priceRange[0] > 0 ||
-    filters.priceRange[1] < 1000;
+    filters.priceRange[1] < 50000;
 
   return (
     <div className={styles.page}>
@@ -276,7 +276,7 @@ export default function Shop() {
                     <input
                       type="number"
                       min="0"
-                      max="1000"
+                      max="50000"
                       value={filters.priceRange[0]}
                       onChange={(e) =>
                         setFilters((prev) => ({
@@ -293,14 +293,14 @@ export default function Shop() {
                     <input
                       type="number"
                       min="0"
-                      max="1000"
+                      max="50000"
                       value={filters.priceRange[1]}
                       onChange={(e) =>
                         setFilters((prev) => ({
                           ...prev,
                           priceRange: [
                             prev.priceRange[0],
-                            parseInt(e.target.value) || 1000,
+                            parseInt(e.target.value) || 50000,
                           ],
                         }))
                       }
@@ -371,7 +371,7 @@ export default function Shop() {
                     <div className={styles.productInfo}>
                       <h3>{product.name}</h3>
                       <p className={styles.productBrand}>{product.brand}</p>
-                      <p className={styles.productPrice}>${product.price}</p>
+                      <p className={styles.productPrice}>{product.price} EGP</p>
                     </div>
                   </Link>
                 ))}

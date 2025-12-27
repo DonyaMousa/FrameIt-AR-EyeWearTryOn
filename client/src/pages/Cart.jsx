@@ -47,7 +47,7 @@ export default function Cart() {
                 </div>
                 <div className={styles.itemInfo}>
                   <h3>{item.name}</h3>
-                  <p>${item.price}</p>
+                  <p>{item.price} EGP</p>
                 </div>
                 <div className={styles.itemQuantity}>
                   <button
@@ -70,7 +70,7 @@ export default function Cart() {
                   </button>
                 </div>
                 <div className={styles.itemTotal}>
-                  ${(item.price * item.quantity).toFixed(2)}
+                  {(item.price * item.quantity).toFixed(2)} EGP
                 </div>
                 <button
                   onClick={() => removeFromCart(item.id)}
@@ -85,7 +85,7 @@ export default function Cart() {
             <h2>Order Summary</h2>
             <div className={styles.total}>
               <span>Total:</span>
-              <span>${getCartTotal().toFixed(2)}</span>
+              <span>{getCartTotal().toFixed(2)} EGP</span>
             </div>
             <Button to="/checkout" size="lg" className={styles.checkoutButton}>
               Proceed to Checkout
