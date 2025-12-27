@@ -71,7 +71,7 @@ app.use("/api/orders", orderRoutes);
 // Products endpoint
 app.get("/api/products", async (req, res) => {
   try {
-    if (mongoose.connection.readyState !== 1) {
+    if (ose.connection.readyState !== 1) {
       return res.json({ success: true, data: [] });
     }
     const Product = (await import("./src/models/Product.js")).default;
